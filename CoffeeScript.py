@@ -133,6 +133,7 @@ class CompileCommand(TextCommand):
     def run(self, *args, **kwargs):
         no_wrapper = settings_get('noWrapper', True)
         compile_dir = settings_get('compileDir')
+        runtime = settings_get('runtime')
         source_file = self.view.file_name()
         source_dir = os.path.normcase(os.path.dirname(source_file))
         project_file = self.view.window().project_file_name()
@@ -148,6 +149,9 @@ class CompileCommand(TextCommand):
             args = ['-m'] + args
         if isLitCoffee(self.view):
             args = ['-l'] + args
+        if runtime:
+            args = ['--runtime', runtime] + args
+
 
         # check instance of compile_paths
         if isinstance(compile_paths, dict):

@@ -97,5 +97,9 @@
 	*/
 , "sourceMaps":false
 
+/*
+可选值：window、inline, 设置为这两项时，将在js文件内生成依赖。 为node时会在文件内生成 require('iced-runtime') 加载依赖。
+*/
+, "runtime": "node"
 
 }
